@@ -63,5 +63,11 @@ namespace speedRun_Exam
                 }
             }
         }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show("Неверный формат данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
     }
 }
