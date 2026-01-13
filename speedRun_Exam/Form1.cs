@@ -13,8 +13,7 @@ namespace speedRun_Exam
 {
     public partial class Form1 : Form
     {
-        static string pcName = Environment.MachineName;
-        string _conString = $"Data Source={pcName}\\SQLEXPRESS;Initial Catalog=Demo;Integrated Security=True;Encrypt=False;MultipleActiveResultSets=True";
+        
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +23,7 @@ namespace speedRun_Exam
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(_conString))
+                using (SqlConnection connection = new SqlConnection(db.conString))
                 {
                     connection.Open();
                     DataTable dataTable = new DataTable();
@@ -47,7 +46,7 @@ namespace speedRun_Exam
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(_conString))
+            using (SqlConnection con = new SqlConnection(db.conString))
             {
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand("select * from Пользователи", con))
