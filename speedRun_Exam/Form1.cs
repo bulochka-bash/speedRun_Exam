@@ -68,5 +68,37 @@ namespace speedRun_Exam
             MessageBox.Show("Неверный формат данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
+
+        private void findBtn_Click(object sender, EventArgs e)
+        {
+            if (findText.Text != "")
+            {
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                {
+                    for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+                    {
+                        dataGridView1[i, j].Style.BackColor = Color.White;
+                        dataGridView1[i, j].Style.ForeColor = Color.Black;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                {
+                    for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+                    {
+                        if (dataGridView1[i, j].Value.ToString().IndexOf(findText.Text) != -1)
+                        {
+                            dataGridView1[i, j].Style.BackColor = Color.White;
+                            dataGridView1[i, j].Style.ForeColor = Color.Red;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите значение в поиск", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }
